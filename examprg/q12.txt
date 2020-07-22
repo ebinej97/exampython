@@ -1,0 +1,22 @@
+from functools import reduce
+class employee:
+    def __init__(self,eid,ename,edesig,mailid,salary):
+        self.eid=eid
+        self.ename=ename
+        self.edesig=edesig
+        self.mailid=mailid
+        self.salary=salary
+
+lst=[]
+f=open("empex1")
+for data in f:
+    words=data.rstrip("\n").split(",")
+    eid = words[0]
+    ename = words[1]
+    edesig = words[2]
+    mailid = words[3]
+    salary = int(words[4])
+    ob = employee(eid,ename,edesig,mailid,salary)
+    lst.append(ob)
+salary=reduce(lambda ob1,ob2:ob1 if ob1>ob2 else ob2,list(map(lambda ob1:ob1.salary,lst)))
+print(salary)

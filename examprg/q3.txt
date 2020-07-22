@@ -1,0 +1,33 @@
+import re
+class employee:
+    def __init__(self,eid,ename,edesig,mailid,salary):
+        self.eid=eid
+        self.ename=ename
+        self.edesig=edesig
+        self.mailid=mailid
+        self.salary=salary
+
+lst=[]
+f=open("empex1")
+f2=open("validmailid","w")
+for data in f:
+    words=data.rstrip("\n").split(",")
+    eid = words[0]
+    ename = words[1]
+    edesig = words[2]
+    mailid = words[3]
+    salary = int(words[4])
+    ob = employee(eid,ename,edesig,mailid,salary)
+    lst.append(ob)
+mailid=list(map(lambda ob1:ob1.mailid,lst))
+# for i in mailid:
+#     print(i)
+x='[a-zA-Z][a-zA-Z0-9]\w*@gmail[.]com'
+for i in mailid:
+    match=re.fullmatch(x,i)
+    if(match!=None):
+        f2.write("\n")
+        f2.write(i)
+        f2.write("\n")
+    else:
+        pass

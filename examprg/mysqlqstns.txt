@@ -1,0 +1,12 @@
+1.create table emp
+mysql> create table emp1(eid varchar(10),ename varchar(20),edesig varchar(20),mailid varchar(20),salary varchar(10));
+Query OK, 0 rows affected (0.03 sec)
+mysql> LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\emp1.csv'
+    -> INTO TABLE emp1
+    -> FIELDS TERMINATED BY ','
+    -> ENCLOSED BY '"'
+    -> LINES TERMINATED BY '\n';
+Query OK, 4 rows affected (0.01 sec)
+
+2.find designation wise count
+mysql> select edesig,count(*) as Count from emp1 group by edesig;
